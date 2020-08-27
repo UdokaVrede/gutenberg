@@ -33,8 +33,13 @@ function BlockListAppender( {
 	const hasSiblingsSelected =
 		selectedBlockClientId &&
 		blockClientIds.includes( selectedBlockClientId );
+	const isEmptyPage = ! rootClientId && ! blockClientIds.length;
 
-	if ( isLocked || CustomAppender === false || ! hasSiblingsSelected ) {
+	if (
+		isLocked ||
+		CustomAppender === false ||
+		( ! hasSiblingsSelected && ! isEmptyPage )
+	) {
 		return null;
 	}
 
